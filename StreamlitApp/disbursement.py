@@ -15,114 +15,128 @@ req_header_lib = [
 ]
 
 req_body_acc_token_lib = [
-    'grant_type:', 
-    'clientSecret:'
+    '1grant_type:', 
+    '1additionalInfo:',
+    '2clientSecret:',
+    '1}'
 ]
 
 req_body_account_inq_lib = [
-    'partnerReferenceNo:', 
-    'beneficiaryBankCode:', 
-    'beneficiaryAccountNo:', 
-    'additionalInfo:', 
-    'transferService:', 
-    'amount:', 
-    'value:', 
-    'currency:', 
-    'dspsign:'
+    '1partnerReferenceNo:', 
+    '1beneficiaryBankCode:', 
+    '1beneficiaryAccountNo:', 
+    '1additionalInfo:', 
+    '2transferService:', 
+    '2amount:', 
+    '3value:', 
+    '3currency:', 
+    '2}',
+    '2dspsign:',
+    '1}'
 ]
 
 req_body_trf_inter_lib = [
-    'partnerReferenceNo:', 
-    'sourceAccountNo:', 
-    'beneficiaryBankCode:', 
-    'beneficiaryAccountNo:', 
-    'beneficiaryAccountName:', 
-    'transactionDate:', 
-    'amount:', 
-    'value:', 
-    'currency:',
-    'additionalInfo:',
-    'msgId:',
-    'disbDescription:',
-    'disbCategory:',
-    'senderInfo:',
-    'name:',
-    'accountType:',
-    'accountInstId:',
-    'country:',
-    'city:',
-    'identificationType:',
-    'identificationNumber:',
-    'dspsign:'
+    '1partnerReferenceNo:', 
+    '1sourceAccountNo:', 
+    '1beneficiaryBankCode:', 
+    '1beneficiaryAccountNo:', 
+    '1beneficiaryAccountName:', 
+    '1transactionDate:', 
+    '1amount:', 
+    '2value:', 
+    '2currency:',
+    '2}',
+    '1additionalInfo:',
+    '2msgId:',
+    '2disbDescription:',
+    '2disbCategory:',
+    '2senderInfo:',
+    '3name:',
+    '3accountType:',
+    '3accountInstId:',
+    '3country:',
+    '3city:',
+    '3identificationType:',
+    '3identificationNumber:',
+    '2}',
+    '2dspsign:',
+    '1}'
 ]
 
 req_body_trf_status_lib = [
-    'originalPartnerReferenceNo:',
-    'serviceCode:',
-    'additionalInfo:',
-    'msgId:',
-    'dspsign:'
+    '1originalPartnerReferenceNo:',
+    '1serviceCode:',
+    '1additionalInfo:',
+    '2msgId:',
+    '2dspsign:',
+    '1}'
 ]
 
 req_body_balance_inq_lib = [
-    'accountNo:',
-    'additionalInfo:',
-    'dspsign:'
+    '1accountNo:',
+    '1additionalInfo:',
+    '2dspsign:',
+    '1}'
 ]
 
 res_acc_token_lib = [
-    'accessToken:',
-    'tokenType:',
-    'expiresIn:',
-    'responseCode:',
-    'responseMessage:'
+    '1accessToken:',
+    '1tokenType:',
+    '1expiresIn:',
+    '1responseCode:',
+    '1responseMessage:'
 ]
 
 res_account_inq_lib = [
-    'responseCode:',
-    'responseMessage:',
-    'beneficiaryAccountName:',
-    'beneficiaryAccountNo:',
-    'referenceNo:',
-    'additionalInfo:',
-    'msgId:',
-    'isoResponseCode:',
-    'isoResponseMessage:'
+    '1responseCode:',
+    '1responseMessage:',
+    '1beneficiaryAccountName:',
+    '1beneficiaryAccountNo:',
+    '1referenceNo:',
+    '1additionalInfo:',
+    '2msgId:',
+    '2isoResponseCode:',
+    '2isoResponseMessage:',
+    '1}'
 ]
 
 res_trf_inter_lib = [
-    'responseCode:',
-    'responseMessage:',
-    'referenceNo:',
-    'beneficiaryAccountNo:',
-    'additionalInfo:',
-    'isoResponseCode:',
-    'isoResponseMessage:'
+    '1responseCode:',
+    '1responseMessage:',
+    '1referenceNo:',
+    '1beneficiaryAccountNo:',
+    '1additionalInfo:',
+    '2isoResponseCode:',
+    '2isoResponseMessage:'
+    '1}'
 ]
 
 res_trf_status_lib = [
-    'responseCode:',
-    'responseMessage:',
-    'originalReferenceNo:',
-    'referenceNumber:',
-    'beneficiaryAccountNo:',
-    'serviceCode:',
-    'sourceAccountNo:',
-    'latestTransactionStatus:',
-    'transactionStatusDesc:',
-    'additionalInfo:',
-    'isoResponseCode:',
-    'isoResponseMessage:'
+    '1responseCode:',
+    '1responseMessage:',
+    '1originalReferenceNo:',
+    '1referenceNumber:',
+    '1beneficiaryAccountNo:',
+    '1serviceCode:',
+    '1sourceAccountNo:',
+    '1latestTransactionStatus:',
+    '1transactionStatusDesc:',
+    '1additionalInfo:',
+    '2isoResponseCode:',
+    '2isoResponseMessage:',
+    '1}'
 ]
 
 res_balance_inq_lib = [
-    'responseCode:',
-    'responseMessage:',
-    'accountInfos:',
-    'balanceType:',
-    'availableBalance:',
-    'value:',
-    'currency:'
+    '1responseCode:',
+    '1responseMessage:',
+    '1accountInfos:',
+    '2balanceType:',
+    '2availableBalance:',
+    '3value:',
+    '3currency:',
+    '2}',
+    '1}'
 ]
 
 def divider_vertical():
@@ -152,10 +166,10 @@ def is_valid_authorize(value: str) -> bool:
 
 
 def disburse(tc, case_type, service, scenario, response_code, response_message, keyword):
-    if f'req_dis_{tc.replace('.','_')}' not in st.session_state:
-        st.session_state[f'req_dis_{tc.replace('.','_')}'] = False
-    if f'res_dis_{tc.replace('.','_')}' not in st.session_state:
-        st.session_state[f'res_dis_{tc.replace('.','_')}'] = False
+    if f'req_dis_{tc.replace(".","_")}' not in st.session_state:
+        st.session_state[f'req_dis_{tc.replace(".","_")}'] = False
+    if f'res_dis_{tc.replace(".","_")}' not in st.session_state:
+        st.session_state[f'res_dis_{tc.replace(".","_")}'] = False
 
     if 'xx' not in response_code:
         rc = rf"\b{response_code}\b"
@@ -183,12 +197,12 @@ def disburse(tc, case_type, service, scenario, response_code, response_message, 
         )
         if service == 'Any Services':
             divider_vertical()
-            end_point = st.radio('Endpoint:', options=['Access Token', 'Account Inquiry', 'Transfer Interbank', 'Status', 'Balance Inquiry'], horizontal=False, key=f'radio_{tc.replace('.','_')}')
+            end_point = st.radio('Endpoint:', options=['Access Token', 'Eksternal Account Inquiry', 'Interbank Trigger Transfer', 'Status', 'Balance Inquiry'], horizontal=False, key=f'radio_{tc.replace(".","_")}')
         else:
             end_point = service
 
         divider_vertical()
-        st.radio('Flag:', options=['Pass', 'Not Tested', 'Fail'], horizontal=False, key=f'flag_{tc.replace('.','_')}', index=1)
+        st.radio('Flag:', options=['Pass', 'Not Tested', 'Fail'], horizontal=False, key=f'flag_{tc.replace(".","_")}', index=1)
         divider_vertical()
 
         if end_point == 'Access Token':
@@ -200,7 +214,7 @@ def disburse(tc, case_type, service, scenario, response_code, response_message, 
         elif end_point == 'Interbank Trigger Transfer':
             req_body_lib = req_body_trf_inter_lib
             res_body_lib = res_trf_inter_lib
-        elif end_point == 'Status':
+        elif end_point == 'Transaction Status Inquiry':
             req_body_lib = req_body_trf_status_lib
             res_body_lib = res_trf_status_lib
         elif end_point == 'Balance Inquiry':
@@ -209,11 +223,11 @@ def disburse(tc, case_type, service, scenario, response_code, response_message, 
 
     with st.container(horizontal=True):
         with st.container():
-            req_3_2 = st.text_area('Request', key=f'req_{tc.replace('.','_')}', width='stretch')
-            if st.button('Check Request', key=f'btn_req_{tc.replace('.','_')}', width='stretch'):
-                st.session_state[f'req_dis_{tc.replace('.','_')}'] = True
+            req_3_2 = st.text_area('Request', key=f'req_{tc.replace(".","_")}', width='stretch')
+            if st.button('Check Request', key=f'btn_req_{tc.replace(".","_")}', width='stretch'):
+                st.session_state[f'req_dis_{tc.replace(".","_")}'] = True
 
-            if st.session_state[f'req_dis_{tc.replace('.','_')}']:
+            if st.session_state[f'req_dis_{tc.replace(".","_")}']:
                 if req_3_2:
                     temp = req_3_2.replace('"','')
                     temp = temp.replace('{','')
@@ -250,49 +264,98 @@ def disburse(tc, case_type, service, scenario, response_code, response_message, 
                             else:
                                 st.code(f"❌ {header} Not Found!")
                     with st.expander('Body'):
-                        for body in req_body_lib:
-                            match = re.search(rf"{body}\s*+([^,\n]+)", temp)
-                            if match and body not in ['additionalInfo:', 'amount:', 'senderInfo:']:
-                                token = match.group(1)
-                                st.code(f'✅ {body} {token}')
-                            elif match and body in ['additionalInfo:', 'amount:', 'senderInfo:']:
-                                token = match.group(1)
-                                st.write(f'✅ {body} Found!')
+                        text_json = '{\n'
+                        for index in range(len(req_body_lib)):
+                            body_raw = req_body_lib[index]
+                            body = body_raw[1:]
+                            indent = int(body_raw[:1])
+                            if body != '}':
+                                match = re.search(rf"{body}\s*+([^,\n]+)", temp)
+                                if match and body not in ['additionalInfo:', 'amount:', 'senderInfo:']:
+                                    token = match.group(1)
+                                    st.code(f'✅ {body} {token}')
+                                    text_json += f'{indent*" "}"{body[:-1]}": "{token}"'
+                                    if index + 1 != len(req_body_lib) and req_body_lib[index+1][1] != '}':
+                                        text_json += ',\n'
+                                    else:
+                                        text_json += '\n'
+                                elif match and body in ['additionalInfo:', 'amount:', 'senderInfo:']:
+                                    token = match.group(1)
+                                    st.write(f'✅ {body} Found!')
+                                    text_json += f'{int(body_raw[:1])*" "}"{body[:-1]}": {{\n'
+                                else:
+                                    st.code(f"❌{body} Not Found!")
                             else:
-                                st.code(f"❌{body} Not Found!")
+                                text_json += f'{indent*" "}}}'
+                                if index + 1 != len(req_body_lib):
+                                    text_json += ',\n'
+                                else:
+                                    text_json += '\n'
+
+                        text_json += '}'
+
+                        st.code(text_json)
 
 
         with st.container():
-            res_3_2 = st.text_area('Response', key=f'res_{tc.replace('.','_')}', width='stretch')
-            if st.button('Check Response', key=f'btn_res_{tc.replace('.','_')}', width='stretch'):
-                st.session_state[f'res_dis_{tc.replace('.','_')}'] = True
+            res_3_2 = st.text_area('Response', key=f'res_{tc.replace(".","_")}', width='stretch')
+            if st.button('Check Response', key=f'btn_res_{tc.replace(".","_")}', width='stretch'):
+                st.session_state[f'res_dis_{tc.replace(".","_")}'] = True
 
-            if st.session_state[f'res_dis_{tc.replace('.','_')}']:
+            if st.session_state[f'res_dis_{tc.replace(".","_")}']:
                 if res_3_2:
                     temp = res_3_2.replace('"','')
                     temp = temp.replace('{','')
                     temp = temp.replace('}','')
                     temp = temp.replace('[','')
                     temp = temp.replace(']','')
+                    temp = temp.replace('\\','')
+
                     with st.expander('Body', width='stretch'):
-                        for body in res_body_lib:
-                            match = re.search(rf"{body}\s*+([^,\n]+)", temp)
-                            if match:
-                                token = match.group(1)
-                                if body == 'responseCode:':
-                                    if re.search(rc, token):
-                                        st.code(f'✅ {body} {token}')
+                        text_json = '{\n'
+                        for index in range(len(res_body_lib)):
+                            body_raw = res_body_lib[index]
+                            body = str(body_raw[1:])
+                            indent = int(body_raw[:1])
+                            if body != '}':
+                                match = re.search(rf"{body}\s*+([^,\n]+)", temp)
+                                if match:
+                                    token = match.group(1)
+                                    if body == 'responseCode:':
+                                        if re.search(rc, token):
+                                            st.code(f'✅ {body} {token}')
+                                        else:
+                                            st.code(f'❌ {body} {token} not pass')
+                                        text_json += f'{indent*" "}"{body[:-1]}": "{token}"'
+                                    elif body == 'responseMessage:':
+                                        if all(k.lower() in token.lower() for k in keyword):
+                                            st.code(f'✅ {body} {token}')
+                                        else:
+                                            st.code(f'❌ {body} {token} not pass')
+                                        text_json += f'{indent*" "}"{body[:-1]}": "{token}"'
+                                    elif body in ['additionalInfo:', 'accountInfos:', 'availableBalance:']:
+                                        st.write(f'✅ {body} Found!')
+                                        text_json += f'{int(body_raw[:1])*" "}"{body[:-1]}": {{\n'
                                     else:
-                                        st.code(f'❌ {body} {token} not pass')
-                                elif body == 'responseMessage:':
-                                    if all(k.lower() in token.lower() for k in keyword):
                                         st.code(f'✅ {body} {token}')
+                                        text_json += f'{indent*" "}"{body[:-1]}": "{token}"'
+
+                                    if index + 1 != len(res_body_lib) and res_body_lib[index+1][1] != '}':
+                                        text_json += ',\n'
                                     else:
-                                        st.code(f'❌ {body} {token} not pass')
+                                        text_json += '\n'
                                 else:
-                                    st.code(f'✅ {body} {token}')
+                                    st.code(f'❌ {body} not found!')
                             else:
-                                st.code(f'❌ {body} not found!')
+                                text_json += f'{indent*" "}}}'
+                                if index + 1 != len(res_body_lib):
+                                    text_json += ',\n'
+                                else:
+                                    text_json += '\n'
+                        
+                        text_json += '}'
+                        st.code(text_json)
+
                                 
 
 def disbursement():
