@@ -33,4 +33,4 @@ def jwt_token():
         st.text_input('Secret Key:', placeholder='Input client secret key here...', key='secret')
 
     if st.session_state.partner_id and st.session_state.secret:
-        st.success(generate_jwt({"clientId": st.session_state.partner_id}, st.session_state.secret))
+        st.code(generate_jwt({"clientId": st.session_state.partner_id}, st.session_state.secret))
