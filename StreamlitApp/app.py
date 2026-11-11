@@ -1,6 +1,7 @@
 import streamlit as st
 from api import api
 from disbursement import disbursement
+from jwt_count import jwt_token
 
 if 'page' not in st.session_state:
     st.session_state.page = 'home'
@@ -22,10 +23,17 @@ if st.session_state.page == 'home':
         st.session_state.page = 'disbursement'
         st.rerun()
 
+    if st.button('JWT Count', width='stretch'):
+        st.session_state.page = 'jwt_count'
+        st.rerun()
+
 
 if st.session_state.page == 'api':
     api()
     
-if st.session_state.page == 'disbursement':
+elif st.session_state.page == 'disbursement':
     disbursement()
+
+elif st.session_state.page == 'jwt_count':
+    jwt_token()
     
