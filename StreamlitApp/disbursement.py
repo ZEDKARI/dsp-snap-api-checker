@@ -107,7 +107,7 @@ res_trf_inter_lib = [
     '1beneficiaryAccountNo:',
     '1additionalInfo:',
     '2isoResponseCode:',
-    '2isoResponseMessage:'
+    '2isoResponseMessage:',
     '1}'
 ]
 
